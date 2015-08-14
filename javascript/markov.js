@@ -1,11 +1,13 @@
 'use strict';
 
 class Markov {
-
   constructor(text) {
     this.dict = this._parseText(text);
     this.keys = Object.keys(this.dict);
-    this.maxLength = this.keys.length < 30 ? this.keys.length + 10 : 30;
+
+    this.keys.length < 30
+      ? this.maxLength = this.keys.length + 10
+      : this.maxLength = 30;
   }
 
   getRandomKey() {
@@ -45,7 +47,7 @@ class Markov {
         let found = this.getRandomValue(search);
         sentence.push(found);
 
-        if (/\./.test(sentence.slice(-1)) || /\?/.test(sentence.slice(-1)) || /\!/.test(sentence.slice(-1)) ) break;
+        if (/\.|\?|\!/.test(sentence.slice(-1))) break;
         this.maxLength = this.maxLength - 1;
       }
       sentences.push(sentence.join(' '));
@@ -54,7 +56,7 @@ class Markov {
     return sentences.join(' ')
   }
 
-// private
+  // PRIVATE
 
   _parseText(text) {
     let dict = {};
@@ -65,26 +67,14 @@ class Markov {
       })
       .forEach(function(item, index, arr) {
         if (index < arr.length - 2) {
-          let key = [item, arr[index+1]].join(' ');
+          let key = [item, arr[index + 1]].join(' ');
           dict[key] = dict[key] || [];
-          dict[key].push(arr[index+2]);
+          dict[key].push(arr[index + 2]);
         }
       });
 
     return dict;
   }
-
-  _random() {
-    if (this.words[key]) {
-      return this._getRandomElement(this.words[key])
-    } else {
-      return this._getRandomElement(this.words[this._getRandomKey()]);
-    }
-  }
-
-  _last(arr) {
-    return arr[arr.length - 1];
-  }
-} // end class
+}
 
 module.exports = Markov;
