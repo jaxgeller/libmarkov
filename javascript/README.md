@@ -4,8 +4,7 @@ This implementation runs in the browser and in node.
 
 ### Install
 
-will update later
-
+### Use
 
 ### Browser
 
@@ -16,7 +15,7 @@ const Markov = require('libmarkov');
 let text = 'This is my sample text.';
 let generator = new Markov(text);
 
-alert(generator.generate(5));
+alert(generator.generate(10));
 ```
 
 
@@ -24,10 +23,10 @@ alert(generator.generate(5));
 
 ```js
 const Markov = require('libmarkov');
-let text = 'This is my sample text.';
+let text = require('fs').readFileSync('text.txt').toString();
 let generator = new Markov(text);
 
-console.log(generator.generate(5));
+console.log(generator.generate(10));
 ```
 
 
@@ -36,3 +35,6 @@ console.log(generator.generate(5));
 ```shell
 $ libmarkov -s 10 < text.txt
 ```
+
+
+### API
