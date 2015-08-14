@@ -1,0 +1,15 @@
+{
+  "name": "libmarkov",
+  "version": "1.0.0",
+  "description": "Sentence Generation via Markov Chains",
+  "main": "markov.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "@JaxGeller",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  }
+}
