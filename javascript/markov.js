@@ -5,7 +5,10 @@ class Markov {
   constructor(text) {
     this.dict = this._parseText(text);
     this.keys = Object.keys(this.dict);
-    this.maxLength = this.keys.length < 30 ? this.keys.length + 10 : 30;
+
+    this.keys.length < 30
+      ? this.maxLength = this.keys.length + 10
+      : this.maxLength = 30;
   }
 
   getRandomKey() {
@@ -75,11 +78,9 @@ class Markov {
   }
 
   _random() {
-    if (this.words[key]) {
-      return this._getRandomElement(this.words[key])
-    } else {
-      return this._getRandomElement(this.words[this._getRandomKey()]);
-    }
+    return this.words[key]
+      ? this._getRandomElement(this.words[key])
+      : this._getRandomElement(this.words[this._getRandomKey()]);
   }
 
   _last(arr) {
