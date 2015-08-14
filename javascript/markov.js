@@ -68,9 +68,9 @@ class Markov {
       })
       .forEach(function(item, index, arr) {
         if (index < arr.length - 2) {
-          let key = [item, arr[index+1]].join(' ');
+          let key = [item, arr[index + 1]].join(' ');
           dict[key] = dict[key] || [];
-          dict[key].push(arr[index+2]);
+          dict[key].push(arr[index + 2]);
         }
       });
 
