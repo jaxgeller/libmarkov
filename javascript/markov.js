@@ -45,7 +45,7 @@ class Markov {
         let found = this.getRandomValue(search);
         sentence.push(found);
 
-        if (/\./.test(sentence.slice(-1)) || /\?/.test(sentence.slice(-1)) || /\!/.test(sentence.slice(-1)) ) break;
+        if (/\.|\?|\!/.test(sentence.slice(-1))) break;
         this.maxLength = this.maxLength - 1;
       }
       sentences.push(sentence.join(' '));
