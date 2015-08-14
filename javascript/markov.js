@@ -75,16 +75,6 @@ class Markov {
 
     return dict;
   }
-
-  _random() {
-    return this.words[key]
-      ? this._getRandomElement(this.words[key])
-      : this._getRandomElement(this.words[this._getRandomKey()]);
-  }
-
-  _last(arr) {
-    return arr[arr.length - 1];
-  }
 }
 
 module.exports = Markov;
