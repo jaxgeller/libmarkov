@@ -1,7 +1,6 @@
 'use strict';
 
 class Markov {
-
   constructor(text) {
     this.dict = this._parseText(text);
     this.keys = Object.keys(this.dict);
@@ -57,7 +56,7 @@ class Markov {
     return sentences.join(' ')
   }
 
-// private
+  // PRIVATE
 
   _parseText(text) {
     let dict = {};
@@ -86,6 +85,6 @@ class Markov {
   _last(arr) {
     return arr[arr.length - 1];
   }
-} // end class
+}
 
 module.exports = Markov;
