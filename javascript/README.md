@@ -4,6 +4,10 @@ This implementation runs in the browser and in node.
 
 ## Install
 
+```shell
+$ npm install libmarkov
+```
+
 ## Use
 
 ### Browser
@@ -33,7 +37,8 @@ console.log(generator.generate(10));
 ### Command Line
 
 ```shell
-$ libmarkov -s 10 < text.txt
+$ libmarkov 10 < text.txt
+$ echo 'This is my sample text.' | libmarkov 1
 ```
 
 ### API
