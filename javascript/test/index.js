@@ -81,26 +81,27 @@ describe('#generate', function() {
 
   it('should return 1 sentence', function() {
     g.generate(1)
-      .match(/\./g).length.should.be.equal(1)
+      .match(/\.|\?|\!/g).length.should.be.equal(1)
   });
 
   it('should return 10 sentences', function() {
     g.generate(10)
-      .match(/\./g).length.should.be.equal(10)
+      .match(/\.|\?|\!/g).length.should.be.equal(10);
+
   });
 
   it('should return 100 sentences', function() {
     g.generate(100)
-      .match(/\./g).length.should.be.equal(100)
+      .match(/\.|\?|\!/g).length.should.be.equal(100)
   });
 
   it('should return 1000 sentences', function() {
     g.generate(1000)
-      .match(/\./g).length.should.be.equal(1000)
+      .match(/\.|\?|\!/g).length.should.be.equal(1000)
   });
 
-  it('should return 10000 sentences', function() {
+  it('should return 10,000 sentences', function() {
     g.generate(10000)
-      .match(/\./g).length.should.be.equal(10000)
+      .match(/\.|\?|\!/g).length.should.be.equal(10000)
   });
 });

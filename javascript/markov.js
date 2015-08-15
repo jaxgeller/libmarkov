@@ -8,6 +8,8 @@ class Markov {
     this.keys.length < 30
       ? this.maxLength = this.keys.length + 10
       : this.maxLength = 30;
+
+    this.punct = /\.|\?|\!/;
   }
 
   parseText(text) {
@@ -33,7 +35,12 @@ class Markov {
   }
 
   getRandomValue(key) {
-    return this.dict[key][Math.floor(Math.random() * this.dict[key].length)];
+    let search;
+    this.dict[key]
+      ? search = key
+      : search = this.getRandomKey();
+
+    return this.dict[search][Math.floor(Math.random() * this.dict[search].length)];
   }
 
   getCapitalizedKey() {
@@ -43,34 +50,37 @@ class Markov {
     while (tries--) {
       key = this.getRandomKey();
 
-      if (/[A-Z]/.test(key.charAt(0)))
+      if (/[A-Z]/.test(key.charAt(0)) && !this.punct.test(key))
         break;
     }
 
-    return key;
+    return key.replace(this.punct, '');
+  }
+
+  generateSentence() {
+    let maxLength = this.maxLength;
+    let sentence = [].concat(this.getCapitalizedKey().split(' '));
+
+    while (maxLength--) {
+      let search = sentence.slice(-2).join(' ');
+      let found = this.getRandomValue(search);
+      sentence.push(found);
+
+      if (this.punct.test(sentence.slice(-1))) break;
+      if(maxLength === 0) sentence[sentence.length-1] += '.';
+    }
+
+    return sentence.join(' ');
   }
 
   generate(sentenceCount) {
     let sentences = [];
 
     while (sentenceCount--) {
-      let maxLength = this.maxLength;
-      let sentence = [];
-      let initKey = this.getCapitalizedKey();
-      sentence = sentence.concat(initKey.split(' '));
-
-      while (maxLength) {
-        let search = sentence.slice(-2).join(' ');
-        let found = this.getRandomValue(search);
-        sentence.push(found);
-
-        if (/\.|\?|\!/.test(sentence.slice(-1))) break;
-        maxLength = maxLength - 1;
-      }
-      sentences.push(sentence.join(' '));
+      sentences.push(this.generateSentence());
     }
 
-    return sentences.join(' ')
+    return sentences.join(' ');
   }
 }
 
