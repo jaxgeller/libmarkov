@@ -1,10 +1,24 @@
 {
   "name": "libmarkov",
   "version": "1.0.0",
-  "description": "Sentence Generation via Markov Chains",
+  "description": "Libmarkov in JS",
+  "keywords": [
+    "markov",
+    "markov chain",
+    "markov chain sentence",
+    "sentence generator"
+  ],
   "main": "markov.js",
   "scripts": {
     "test": "mocha"
+  },
+  "homepage": "https://github.com/jaxgeller/libmarkov",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaxgeller/libmarkov.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jaxgeller/libmarkov/issues"
   },
   "author": "@JaxGeller",
   "license": "MIT",
