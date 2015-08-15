@@ -20,3 +20,6 @@ See each individual implementations readme.
 - [ ] Rust
 - [ ] Haskell
 - [ ] Java
+
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
