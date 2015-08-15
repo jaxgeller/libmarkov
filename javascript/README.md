@@ -5,7 +5,7 @@ This implementation runs in the browser and in node.
 ## Install
 
 ```shell
-$ npm install libmarkov
+$ npm install libmarkov [-g]
 ```
 
 ## Use
