@@ -2,12 +2,30 @@
 
 class Markov {
   constructor(text) {
-    this.dict = this._parseText(text);
+    this.dict = this.parseText(text);
     this.keys = Object.keys(this.dict);
 
     this.keys.length < 30
       ? this.maxLength = this.keys.length + 10
       : this.maxLength = 30;
+  }
+
+  parseText(text) {
+    let dict = {};
+    text
+      .match(/\S+\s*/g)
+      .map(function(item) {
+        return item.trim();
+      })
+      .forEach(function(item, index, arr) {
+        if (index < arr.length - 2) {
+          let key = [item, arr[index + 1]].join(' ');
+          dict[key] = dict[key] || [];
+          dict[key].push(arr[index + 2]);
+        }
+      });
+
+    return dict;
   }
 
   getRandomKey() {
@@ -53,26 +71,6 @@ class Markov {
     }
 
     return sentences.join(' ')
-  }
-
-  // PRIVATE
-
-  _parseText(text) {
-    let dict = {};
-    text
-      .match(/\S+\s*/g)
-      .map(function(item) {
-        return item.trim();
-      })
-      .forEach(function(item, index, arr) {
-        if (index < arr.length - 2) {
-          let key = [item, arr[index + 1]].join(' ');
-          dict[key] = dict[key] || [];
-          dict[key].push(arr[index + 2]);
-        }
-      });
-
-    return dict;
   }
 }
 

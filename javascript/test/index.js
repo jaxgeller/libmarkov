@@ -23,6 +23,15 @@ describe('#constructor', function() {
   });
 });
 
+describe('#parseText', function() {
+  let g = new Markov('This is my sample text.');
+
+  it('should be able to parse text correctly into dict', function() {
+    JSON.stringify(g.parseText('This is my sample text.'))
+      .should.equal('{"This is":["my"],"is my":["sample"],"my sample":["text."]}');
+  });
+});
+
 describe('#getRandomKey', function() {
   let g = new Markov(fs.readFileSync(`${__dirname}/lorem.txt`).toString());
   let key = g.getRandomKey();
@@ -69,9 +78,29 @@ describe('#getCapitalizedKey', function() {
 
 describe('#generate', function() {
   let g = new Markov(fs.readFileSync(`${__dirname}/lorem.txt`).toString());
-  let sentences = g.generate(10);
+
+  it('should return 1 sentence', function() {
+    g.generate(1)
+      .match(/\./g).length.should.be.equal(1)
+  });
 
   it('should return 10 sentences', function() {
-    sentences.match(/\./g).length.should.be.equal(10)
+    g.generate(10)
+      .match(/\./g).length.should.be.equal(10)
+  });
+
+  it('should return 100 sentences', function() {
+    g.generate(100)
+      .match(/\./g).length.should.be.equal(100)
+  });
+
+  it('should return 1000 sentences', function() {
+    g.generate(1000)
+      .match(/\./g).length.should.be.equal(1000)
+  });
+
+  it('should return 10000 sentences', function() {
+    g.generate(10000)
+      .match(/\./g).length.should.be.equal(10000)
   });
 });
