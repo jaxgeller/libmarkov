@@ -112,7 +112,7 @@ describe('#generate', function() {
   });
 
   it('should return 1,000,000 sentences', function() {
-    this.timeout(2000 * 10);
+    this.timeout(1000 * 60);
 
     g.generate(1000000)
       .match(/\.|\?|\!/g).length.should.be.equal(1000000)
