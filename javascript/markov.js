@@ -36,19 +36,18 @@ class Markov {
     let sentences = [];
 
     while (sentenceCount--) {
-      this.maxLength = 30;
-
+      let maxLength = this.maxLength;
       let sentence = [];
       let initKey = this.getCapitalizedKey();
       sentence = sentence.concat(initKey.split(' '));
 
-      while (this.maxLength) {
+      while (maxLength) {
         let search = sentence.slice(-2).join(' ');
         let found = this.getRandomValue(search);
         sentence.push(found);
 
         if (/\.|\?|\!/.test(sentence.slice(-1))) break;
-        this.maxLength = this.maxLength - 1;
+        maxLength = maxLength - 1;
       }
       sentences.push(sentence.join(' '));
     }
