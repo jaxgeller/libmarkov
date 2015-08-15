@@ -87,7 +87,6 @@ describe('#generate', function() {
   it('should return 10 sentences', function() {
     g.generate(10)
       .match(/\.|\?|\!/g).length.should.be.equal(10);
-
   });
 
   it('should return 100 sentences', function() {
@@ -103,5 +102,19 @@ describe('#generate', function() {
   it('should return 10,000 sentences', function() {
     g.generate(10000)
       .match(/\.|\?|\!/g).length.should.be.equal(10000)
+  });
+
+  it('should return 100,000 sentences', function() {
+    this.timeout(2000 * 5);
+
+    g.generate(100000)
+      .match(/\.|\?|\!/g).length.should.be.equal(100000)
+  });
+
+  it('should return 1,000,000 sentences', function() {
+    this.timeout(2000 * 10);
+
+    g.generate(1000000)
+      .match(/\.|\?|\!/g).length.should.be.equal(1000000)
   });
 });
