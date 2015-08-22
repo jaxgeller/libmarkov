@@ -10,7 +10,11 @@ This implementation runs in the browser and in node.
 $ npm install libmarkov [-g]
 ```
 
-## Use
+### Use
+Create a new instance, with the constructor params being a string of the training text.
+Then call `.generate` with the number of sentences you'd like to generate.
+
+The constructor always takes in a string, making it more accesible for both the browser and node. See examples below for clarification.
 
 ### Browser
 
@@ -30,7 +34,7 @@ alert(generator.generate(10));
 ```js
 const Markov = require('libmarkov');
 
-let text = require('fs').readFileSync('text.txt').toString();
+let text = require('fs').readFileSync('text.txt').toString() || "My test string here";
 let generator = new Markov(text);
 
 console.log(generator.generate(10));
@@ -40,7 +44,9 @@ console.log(generator.generate(10));
 
 ```shell
 $ libmarkov 10 < text.txt
-$ echo 'This is my sample text.' | libmarkov 1
+$ echo 'This is my training text.' | libmarkov 10
 ```
 
-### API
+### Todo
+
+runtime is slow, something like `0(log(n))`, need to get the runtime down to be able to generate millions of lines with ease.
