@@ -4,6 +4,7 @@ import (
 	"fmt"
 	// "github.com/davecgh/go-spew/spew"
 	"strings"
+	"unicode"
 )
 
 type Prefix []string
@@ -17,8 +18,13 @@ func get_random_key(m map[string][]string) string {
 	return ""
 }
 
-func is_capital(s string) string {
-
+func is_capital(s string) bool {
+	r := []rune(s)
+	if unicode.IsUpper(r[0]) {
+		return true
+	} else {
+		return false
+	}
 }
 
 func main() {
@@ -27,6 +33,7 @@ func main() {
 	c := make(map[string][]string)
 	var s string
 
+	// generate chain
 	for {
 		if _, err := fmt.Fscan(r, &s); err != nil {
 			break
@@ -38,5 +45,15 @@ func main() {
 		copy(p, p[1:])
 		p[1] = s
 	}
-	fmt.Println(get_random_key(c))
+
+	// get starting key
+	k := get_random_key(c)
+	for {
+
+		if is_capital(k) {
+			break
+		} else {
+			k = get_random_key(c)
+		}
+	}
 }
