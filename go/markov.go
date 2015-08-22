@@ -56,4 +56,12 @@ func main() {
 			k = get_random_key(c)
 		}
 	}
+
+	// note: possible to make a slice with the max sentence length as the runtime size
+	var sentence []string
+
+	sentence = append(sentence, k)
+	sentence = append(sentence, strings.Join(c[k], " "))
+
+	fmt.Println(sentence)
 }
