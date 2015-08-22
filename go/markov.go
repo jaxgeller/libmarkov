@@ -57,11 +57,17 @@ func main() {
 		}
 	}
 
-	// note: possible to make a slice with the max sentence length as the runtime size
+	init := strings.Split(k, " ")
+
 	var sentence []string
+	sentence = append(sentence, init[0])
+	sentence = append(sentence, init[1])
 
-	sentence = append(sentence, k)
-	sentence = append(sentence, strings.Join(c[k], " "))
-
+	for i := 0; i < 10; i++ {
+		// get last two elements
+		search := strings.Join(sentence[len(sentence)-2:], " ")
+		sentence = append(sentence, c[search][0])
+	}
 	fmt.Println(sentence)
+
 }
