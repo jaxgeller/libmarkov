@@ -9,6 +9,7 @@ import (
 
 const maxLength int = 30
 const punctuation string = ".!?"
+const generate int = 10
 
 type Prefix []string
 
@@ -31,6 +32,17 @@ func is_capital(s string) bool {
 	}
 }
 
+func getInitKey(c map[string][]string) []string {
+	k := get_random_key(c)
+	for {
+		if is_capital(k) {
+			return strings.Split(k, " ")
+		} else {
+			k = get_random_key(c)
+		}
+	}
+}
+
 func main() {
 	r := strings.NewReader(s_test)
 	p := make(Prefix, 2)
@@ -50,32 +62,26 @@ func main() {
 		p[1] = s
 	}
 
-	// get starting key
-	k := get_random_key(c)
-	for {
+	// generate alll
+	var allSentences []string
 
-		if is_capital(k) {
-			break
-		} else {
-			k = get_random_key(c)
-		}
-	}
+	for i := 0; i < generate; i++ {
+		var sentence []string
+		init := getInitKey(c)
 
-	init := strings.Split(k, " ")
+		sentence = append(sentence, init[0])
+		sentence = append(sentence, init[1])
 
-	var sentence []string
-	sentence = append(sentence, init[0])
-	sentence = append(sentence, init[1])
-
-	for i := 0; i < maxLength; i++ {
-		search := strings.Join(sentence[len(sentence)-2:], " ")
-
-		if strings.ContainsAny(search, punctuation) {
-			break
+		for i := 0; i < maxLength; i++ {
+			search := strings.Join(sentence[len(sentence)-2:], " ")
+			if strings.ContainsAny(search, punctuation) {
+				break
+			}
+			sentence = append(sentence, c[search][0])
 		}
 
-		sentence = append(sentence, c[search][0])
+		allSentences = append(allSentences, strings.Join(sentence, " "))
 	}
 
-	fmt.Println(sentence)
+	fmt.Println(allSentences)
 }
