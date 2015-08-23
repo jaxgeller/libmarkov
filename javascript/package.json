@@ -1,12 +1,14 @@
 {
   "name": "libmarkov",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Libmarkov in JS",
   "keywords": [
     "markov",
     "markov chain",
     "markov chain sentence",
-    "sentence generator"
+    "markov chain sentence generator",
+    "sentence generator",
+    "lorem ipsum generator"
   ],
   "main": "markov.js",
   "scripts": {

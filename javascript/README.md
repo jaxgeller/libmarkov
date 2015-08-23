@@ -21,12 +21,12 @@ The constructor always takes in a string, making it more accesible for both the 
 Using an ES6 and CommonJS transpiler, like [Babel](https://babeljs.io):
 
 ```js
-const Markov = require('libmarkov');
+import Markov from 'libmarkov'
 
-let text = 'This is my sample text.';
+let text = document.getElementById('myinput').value;
 let generator = new Markov(text);
 
-alert(generator.generate(10));
+document.getElementById('myresults').textContent = generator.generate(10)
 ```
 
 ### Node
@@ -46,7 +46,3 @@ console.log(generator.generate(10));
 $ libmarkov 10 < text.txt
 $ echo 'This is my training text.' | libmarkov 10
 ```
-
-### Todo
-
-runtime is slow, something like `0(log(n))`, need to get the runtime down to be able to generate millions of lines with ease.
