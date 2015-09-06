@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/libmarkov.svg)](http://badge.fury.io/js/libmarkov)
 
-This implementation runs in the browser and in node.
+This implementation runs in the browser, node, and as a binary.
 
 ## Install
 
