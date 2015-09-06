@@ -21,3 +21,4 @@ This implementation runs as a binary and as a library.
 * Add documentation
 * Create tests
 * Create cross platform binaries
+* Binary should accept stdin and output to stdout
