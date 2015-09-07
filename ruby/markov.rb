@@ -1,7 +1,15 @@
+#  where im leaving off
+#  things at compile time are really quick for big N, just has to run through the text once.
+#
+#  so i decided that do as much work as possible in compile time rather than runtime
+#  perhaps have a flag that switches based on N, maybe compile time heavy if n > 1000 or something
+#  punctuated keys keeps track of keys that are punctuated. so instead of doing a regex match on every key in
+#  #generateSentence, just see if the curr key exists in a map (or maybe a set?) for a faster lookup.
 class Generator
   def initialize(text)
     @text = text
     @initKeys = []
+    @punctuatedKeys = {}
     @dict = self.assembleDict
     @keys = @dict.keys
     @max = @dict.length
@@ -18,6 +26,10 @@ class Generator
 
         if is_capital(key)
           @initKeys << key
+        end
+
+        if is_punctuated(key)
+          @punctuatedKeys[key] = true
         end
       end
 
@@ -45,7 +57,7 @@ class Generator
       val = @dict[search].sample
       sentence << val
 
-      if has_punctuation(val)
+      if @punctuatedKeys[search]
         break
       end
     end
@@ -57,7 +69,7 @@ class Generator
     key[0] == key[0].upcase
   end
 
-  def has_punctuation(key)
+  def is_punctuated(key)
     key[/\.|\?|\!/] != nil
   end
 
