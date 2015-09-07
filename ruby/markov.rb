@@ -5,6 +5,7 @@
 #  perhaps have a flag that switches based on N, maybe compile time heavy if n > 1000 or something
 #  punctuated keys keeps track of keys that are punctuated. so instead of doing a regex match on every key in
 #  #generateSentence, just see if the curr key exists in a map (or maybe a set?) for a faster lookup.
+#  also look into threads for generating sentences in parallel, since order does not matter.
 class Generator
   def initialize(text)
     @text = text
