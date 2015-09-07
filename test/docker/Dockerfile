@@ -28,16 +28,5 @@ RUN \
   # install
   nvm install iojs-v3.3.0 && \
   rvm install ruby-2.2.1 && \
-  gvm install go1.4 && \
-  gvm use go.1.4
-
-  # last setup for binaries
-
-# Implementations
-RUN \
-  npm install libmarkov -g &&
-  gem install libmarkov &&
-  go get -u github.com/jaxgeller/libmarkov/go/cmd
-
-COPY \
-  $(pwd)/lorem.txt:lorem.txt
+  gvm install go1.5 && \
+  gvm use go.1.5
