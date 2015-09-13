@@ -1,4 +1,7 @@
-node_modules
 *.log
 .DS_Store
-markov
+
+node_modules
+
+go/bin
+go/pkg
