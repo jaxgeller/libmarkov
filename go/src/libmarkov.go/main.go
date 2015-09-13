@@ -5,12 +5,18 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/jaxgeller/libmarkov"
+	"libmarkov"
 )
 
 func main() {
+	var arg string
+	if len(os.Args) > 1 {
+		arg = os.Args[1]
+	} else {
+		arg = "10"
+	}
 
-	count, err := strconv.Atoi(os.Args[1])
+	count, err := strconv.Atoi(arg)
 	if err != nil {
 		os.Exit(1)
 	}

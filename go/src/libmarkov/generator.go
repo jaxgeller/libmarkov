@@ -58,5 +58,5 @@ func (g *Generator) Generate(count int) string {
 		allSentences = append(allSentences, strings.Join(sentence, " "))
 	}
 
-	return strings.Join(allSentences, " ")
+	return strings.Join(allSentences, " ") + "\n"
 }
