@@ -6,7 +6,6 @@
 * Should be able to get a random init key from the dict
 * Should be able to get a random value given a key
 
-
 # Generating
 
 ## Lib
