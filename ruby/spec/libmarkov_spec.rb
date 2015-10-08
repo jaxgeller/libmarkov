@@ -37,6 +37,15 @@ describe Libmarkov do
 
     sentences = g.generate(100)
     expect(sentences.split(/\.|\?|\!/).length).to eq(100)
+
+    sentences = g.generate(1000)
+    expect(sentences.split(/\.|\?|\!/).length).to eq(1000)
+
+    sentences = g.generate(10000)
+    expect(sentences.split(/\.|\?|\!/).length).to eq(10000)
+
+    sentences = g.generate(100000)
+    expect(sentences.split(/\.|\?|\!/).length).to eq(100000)
   end
 
   # helpers
