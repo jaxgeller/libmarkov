@@ -5,4 +5,4 @@ go/pkg
 .bundle/
 Gemfile.lock
 /tmp/**
-
+pkg/
