@@ -8,12 +8,12 @@ The goal of this project is to expose low-level and hackable generation apis tha
 ### Implementations
 * [javascript](https://github.com/jaxgeller/libmarkov/tree/master/javascript)
 * [go](https://github.com/jaxgeller/libmarkov/tree/master/go)
+* [ruby](https://github.com/jaxgeller/libmarkov/tree/master/ruby)
 
 ### Use
 See each individual implementations readme.
 
 ### Roadmap (no particular order)
-- [ ] Ruby
 - [ ] Python
 - [ ] C
 - [ ] Lua
