@@ -1,6 +1,8 @@
 *.log
 .DS_Store
-
 node_modules
-
 go/pkg
+.bundle/
+Gemfile.lock
+/tmp/**
+
