@@ -24,7 +24,7 @@ Libmarkov expects the training text to be delivered via a string. This makes it 
 All you need to do is read some kind of file, db entry, or string into memory and you're good to go.
 
 
-This will pring out 100 sentences based on the training text
+This will print out 100 sentences based on the training text
 
 ```ruby
 require "libmarkov"
