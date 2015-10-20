@@ -9,10 +9,9 @@
 using namespace std;
 
 int main () {
-  unordered_map<string, vector<string> > map;
+  map<string, vector<string> > mp;
   vector<string> holder(2);
   string prefix;
-
 
   char str[] ="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis facere doloribus possimus. Mollitia eveniet, est, praesentium illum magnam, optio itaque quae impedit reprehenderit aliquam, expedita esse voluptatum animi nesciunt porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolorem ex, reprehenderit magnam dolorum quas nisi, nostrum ipsum aliquid vitae officia fugiat! Deserunt at aliquam, vitae architecto? Iusto, accusamus, qui.";
 
@@ -25,19 +24,21 @@ int main () {
     holder[1] = word;
     prefix = holder[0] + " " + holder[1];
 
-    map[prefix].push_back(word);
+    mp[prefix].push_back(word);
     word = strtok (NULL, " ");
   }
 
+  string upper = "";
 
-  for (auto m = map.begin(); m != map.end(); ++m) {
+  for (auto m = mp.begin(); m != mp.end(); ++m) {
 
     if ( isupper(m->first[0]) ) {
-      cout << m->first << "\n";
+      upper = m->first;
       break;
     }
-
   }
+
 
   return 0;
 }
+
