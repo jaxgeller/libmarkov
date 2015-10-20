@@ -1,4 +1,8 @@
+extern crate regex;
+extern crate rand;
+use rand::Rng;
 use std::collections::HashMap;
+use regex::Regex;
 
 fn main() {
     let mut dict = HashMap::new();
@@ -33,15 +37,18 @@ fn main() {
         }
     }
 
-    let mut times = 10;
-
-    let mut sentence = vec!["Lorem", "ipsum"];
-    while times > 0 {
-        times = times - 1;
+    let mut sentence: Vec<&str> = init_key.split(" ").collect();
+    while true {
         let search = [ sentence[sentence.len()-2], sentence[sentence.len()-1] ].join(" ");
         let word = dict.get(&search).unwrap();
-        sentence.push(word[0]);
+        let breakRegex = Regex::new(r"\.|!|\?").unwrap();
+        let rand_el = rand::thread_rng().gen_range(0, word.len());
+        sentence.push(word[rand_el]);
+
+        if breakRegex.is_match(sentence[sentence.len()-1]) {
+            break;
+        }
     }
 
-    println!("{:?}", sentence);
+    println!("{:?}", sentence.join(" "));
 }

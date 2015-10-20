@@ -2,3 +2,7 @@
 name = "rust"
 version = "0.1.0"
 authors = ["jaxgeller <jacksongeller@gmail.com>"]
+
+[dependencies]
+regex = "0.1.41"
+rand="0.3.0"

@@ -7,4 +7,3 @@ Gemfile.lock
 /tmp/**
 pkg/
 target/
-/Cargo.lock
