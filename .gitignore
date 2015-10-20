@@ -6,5 +6,5 @@ go/pkg
 Gemfile.lock
 /tmp/**
 pkg/
-/target
+target/
 /Cargo.lock
