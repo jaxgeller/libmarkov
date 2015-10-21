@@ -21,6 +21,4 @@ See each individual implementations readme.
 - [ ] Haskell
 - [ ] Java
 
-### License
-
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
